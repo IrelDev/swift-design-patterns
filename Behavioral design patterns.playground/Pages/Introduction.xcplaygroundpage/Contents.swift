@@ -7,4 +7,4 @@ Behavioral design patterns introduction
 > For example, delegation is a behavioral design pattern.
 */
 
-//: [Next](@next)
+//: [Delegation pattern](@next)
