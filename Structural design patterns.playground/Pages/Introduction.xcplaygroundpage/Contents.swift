@@ -7,4 +7,4 @@ Structural design patterns introduction
 > For example, MVC (ModelViewController) is a structural design pattern.
 */
 
-//: [Next](@next)
+//: [ModelViewController (MVC)  pattern](@next)
