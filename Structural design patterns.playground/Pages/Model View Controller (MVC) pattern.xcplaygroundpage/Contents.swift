@@ -4,15 +4,15 @@
  MVC design pattern
  ============
  
- > MVC design pattern separates objects into three types, specifically Model View and Controller.
+ > MVC design pattern separates objects into three types, specifically Model, View and Controller.
  >
  > * Model is intended to store data in structures or classes (usually structures).
- > * View display visual elements.
+ > * View is intended to display visual elements.
  > * Controller is intended to coordinate between models and views.
  
  ## When to use MVC?
- This pattern is more of a starting point for creating swift & objc applications, but in the future you will probably use additional patterns besides MVC even in one project.
- ## Example below shows how MVC works. Don't forget to open live view and launch playground to see results and layout.
+ This pattern is more of a starting point for creating swift & objc applications, but in the future you will probably use additional patterns besides MVC even in single project.
+ ## The example below shows how MVC works. Don't forget to open live view and launch playground to see results and layout.
  */
 import UIKit
 import PlaygroundSupport
