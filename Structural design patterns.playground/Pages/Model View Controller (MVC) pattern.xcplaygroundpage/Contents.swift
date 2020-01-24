@@ -51,26 +51,44 @@ public class NewspaperViewController: UIViewController{
         
         let newspaperPublicationView = NewspaperPublicationView()
         
-        newspaperPublicationView.titleLabel = UILabel(frame: CGRect(x: view.center.x - 50, y: 100, width: 200, height: 100))
-        newspaperPublicationView.titleLabel.text = publication?.publicationTitle
+        newspaperPublicationView.titleLabel = UILabel()
         view.addSubview(newspaperPublicationView.titleLabel)
         
-        newspaperPublicationView.authorLabel = UILabel(frame: CGRect(x: 0, y: 200, width: 200, height: 100))
-        newspaperPublicationView.authorLabel.text = publication?.publicationAuthor
+        newspaperPublicationView.titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        newspaperPublicationView.titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        newspaperPublicationView.titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
+        newspaperPublicationView.titleLabel.text = publication?.publicationTitle
+        
+        newspaperPublicationView.authorLabel = UILabel()
         view.addSubview(newspaperPublicationView.authorLabel)
         
-        newspaperPublicationView.descriptionLabel = UILabel(frame: CGRect(x: 0, y: 300, width: 400, height: 100))
-        newspaperPublicationView.descriptionLabel.text = publication?.publicationDescription
+        newspaperPublicationView.authorLabel.translatesAutoresizingMaskIntoConstraints = false
+        newspaperPublicationView.authorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        newspaperPublicationView.authorLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 50).isActive = true
+        newspaperPublicationView.authorLabel.text = publication?.publicationAuthor
+        
+        
+        newspaperPublicationView.descriptionLabel = UILabel()
         view.addSubview(newspaperPublicationView.descriptionLabel)
+        
+        newspaperPublicationView.descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        newspaperPublicationView.descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        newspaperPublicationView.descriptionLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 100).isActive = true
+        newspaperPublicationView.descriptionLabel.text = publication?.publicationDescription
         
         let dateFormatter: DateFormatter = {
             let dt = DateFormatter()
             dt.dateFormat = "yyyy-MM-dd HH:mm:ss"
             return dt
         }()
-        newspaperPublicationView.publishedAtLabel = UILabel(frame: CGRect(x: 0, y: 400, width: 200, height: 100))
-        newspaperPublicationView.publishedAtLabel.text = dateFormatter.string(from: publication!.publishedAt)
+        
+        newspaperPublicationView.publishedAtLabel = UILabel()
         view.addSubview(newspaperPublicationView.publishedAtLabel)
+        
+        newspaperPublicationView.publishedAtLabel.translatesAutoresizingMaskIntoConstraints = false
+        newspaperPublicationView.publishedAtLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        newspaperPublicationView.publishedAtLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 150).isActive = true
+        newspaperPublicationView.publishedAtLabel.text = dateFormatter.string(from: publication!.publishedAt)
     }
     private func dataFromJSON() -> NewspaperPublication{
         let jsonAnswer = """
