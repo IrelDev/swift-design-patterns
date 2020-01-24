@@ -6,11 +6,11 @@
  
  > Delegation pattern allows an object to use another object to provide data or perform a task instead of doing it yourself.
  >
- > Delegation design pattern has three parts, specifically Delegation Object, Delegate Protocol and Delegate object.
+ > Delegation design pattern has three parts, specifically Delegation Object, Delegate Protocol and Delegate Object.
  >
  > * Delegation Object is an object that has a delegate.
  > * Delegate Protocol defines methods and computed properties that will be used in types that conforms to this protocol.
- > * Delegate object is an object that conforms to delegate protocol.
+ > * Delegate Object is an object that conforms to delegate protocol.
  >
  > Note that any protocol can be used as the delegate.
  
@@ -93,7 +93,7 @@ extension ViewController: ColorDelegate{
     }
 }
 PlaygroundPage.current.liveView = ViewController()
-//: [Next design pattern](@next)
+//: [Strategy pattern](@next)
 /*:
  MIT License
  
