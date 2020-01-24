@@ -40,10 +40,15 @@ class ViewController: UIViewController{
     }
     func setupView(){
         view.backgroundColor = .systemPink
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+        let titleLabel = UILabel()
+        view.addSubview(titleLabel)
+        
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        titleLabel.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
         
         titleLabel.text = "Tap on tableView cell"
-        view.addSubview(titleLabel)
+        titleLabel.textColor = .gray
     }
     func setupTableView(){
         view.addSubview(table)
@@ -69,11 +74,15 @@ extension ViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: cell.center.y / 2))
-        label.frame = cell.frame
+        let label = UILabel()
+        cell.addSubview(label)
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.centerXAnchor.constraint(equalTo: cell.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: cell.topAnchor, constant: 20).isActive = true
+        
         label.text = "I'm label on \(indexPath.row) line"
         
-        cell.addSubview(label)
         return cell
     }
 }
