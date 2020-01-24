@@ -27,7 +27,7 @@ import UIKit
 import PlaygroundSupport
 //: DELEGATE PROTOCOL
 protocol ColorDelegate: class{
-    func changeBackgroundColorWhenTapped(_ tableView: UITableView, with color: UIColor)
+    func changeBackgroundColorWhenTapped(_ viewController: UIViewController, with color: UIColor)
 }
 class ViewController: UIViewController{
     var table = UITableView()
@@ -35,13 +35,21 @@ class ViewController: UIViewController{
     weak var colorDelegate: ColorDelegate?
     
     override func viewDidLoad(){
+        setupView()
         setupTableView()
+    }
+    func setupView(){
+        view.backgroundColor = .systemPink
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+        
+        titleLabel.text = "Tap on tableView cell"
+        view.addSubview(titleLabel)
     }
     func setupTableView(){
         view.addSubview(table)
         
         table.translatesAutoresizingMaskIntoConstraints = false
-        table.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        table.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
         table.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         table.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         table.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
@@ -72,15 +80,16 @@ extension ViewController: UITableViewDataSource{
 //: TABLEVIEW DELEGATE
 extension ViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let color: UIColor = table.backgroundColor == .black ? .white: .black
+        let color: UIColor = view.backgroundColor == .black ? .white: .black
+        
         colorDelegate = self
-        colorDelegate?.changeBackgroundColorWhenTapped(table, with: color)
+        colorDelegate?.changeBackgroundColorWhenTapped(self, with: color)
     }
 }
 //: VC BECOMES DELEGATE OBJECT
 extension ViewController: ColorDelegate{
-    func changeBackgroundColorWhenTapped(_ tableView: UITableView, with color: UIColor) {
-        tableView.backgroundColor = color
+    func changeBackgroundColorWhenTapped(_ viewController: UIViewController, with color: UIColor) {
+        viewController.view.backgroundColor = color
     }
 }
 PlaygroundPage.current.liveView = ViewController()
