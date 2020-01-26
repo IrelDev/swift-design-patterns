@@ -7,4 +7,4 @@ Creational design patterns introduction
 > For example, singleton is a creational design pattern.
 */
 
-//: [Next](@next)
+//: [Singleton pattern](@next)
