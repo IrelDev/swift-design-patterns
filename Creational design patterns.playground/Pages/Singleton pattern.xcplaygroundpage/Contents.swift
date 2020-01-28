@@ -22,8 +22,8 @@ import PlaygroundSupport
 final class Settings{
     //: SINGLETON INSTANCE
     static let shared = Settings()
-    
     var backgroundColor: UIColor = .white
+ 
     public init(){}
 }
 class ViewController: UIViewController {
@@ -39,11 +39,10 @@ class ViewController: UIViewController {
         button.layer.cornerRadius = 10
         button.tintColor = .white
         button.setTitle("Set randomBackgroundColor", for: .normal)
-        
         button.addTarget(self, action: #selector(setColorToSettings), for: .touchUpInside)
-        
-        
+     
         view.addSubview(button)
+     
         button.translatesAutoresizingMaskIntoConstraints = false
         button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         button.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
