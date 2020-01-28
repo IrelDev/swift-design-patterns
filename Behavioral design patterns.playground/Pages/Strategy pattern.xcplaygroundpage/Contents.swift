@@ -76,7 +76,7 @@ struct LomutoQuicksortStrategy: QuicksortStrategy{
 }
 //: OBJECT USING A STRATEGY
 class ViewController: UIViewController{
-    var quicksortStrategy: QuicksortStrategy?
+    var quicksortStrategy: QuicksortStrategy!
     
     var resultLabel: UILabel!
     override func viewDidLoad() {
@@ -116,16 +116,18 @@ class ViewController: UIViewController{
     }
 //: STRATEGY USAGE
     @objc func hoareExecution(){
-        var hoareArray = (0...3).map({_ in Int.random(in: 0...10)})
-        quicksortStrategy = HoareQuicksortStrategy()
-        quicksortStrategy?.quicksorted(&hoareArray, lowestIndex: 0, highestIndex: 3)
-        resultLabel.text = "Hoare quicksorted array: \(hoareArray)"
+        quicksorted(with: HoareQuicksortStrategy())
     }
     @objc func lomutoExecution(){
-        var lomutoArray = (0...3).map({_ in Int.random(in: 0...10)})
-        quicksortStrategy = LomutoQuicksortStrategy()
-        quicksortStrategy?.quicksorted(&lomutoArray, lowestIndex: 0, highestIndex: 3)
-        resultLabel.text = "Lomuto quicksorted array: \(lomutoArray)"
+        quicksorted(with: LomutoQuicksortStrategy())
+    }
+    func quicksorted(with strategy: QuicksortStrategy){
+        var array = (0...3).map({_ in Int.random(in: 0...10)})
+        
+        quicksortStrategy = strategy
+        quicksortStrategy?.quicksorted(&array, lowestIndex: 0, highestIndex: 3)
+        
+        resultLabel.text = "Quicksorted array: \(array)"
     }
     func createStack(with first: UIButton, and second: UIButton){
         let stack = UIStackView()
@@ -154,7 +156,7 @@ class ViewController: UIViewController{
     }
 }
 PlaygroundPage.current.liveView = ViewController()
-//: [Next design pattern](@next)
+//: [Memento pattern](@next)
 /*:
  MIT License
  
