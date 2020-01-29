@@ -29,16 +29,16 @@ import PlaygroundSupport
 protocol ColorDelegate: class{
     func changeBackgroundColorWhenTapped(_ viewController: UIViewController, with color: UIColor)
 }
-class ViewController: UIViewController{
+class ViewController: UIViewController {
     var table = UITableView()
     //: VC BECOMES DELEGATION OBJECT
     weak var colorDelegate: ColorDelegate?
     
-    override func viewDidLoad(){
+    override func viewDidLoad() {
         setupView()
         setupTableView()
     }
-    func setupView(){
+    func setupView() {
         view.backgroundColor = .systemPink
         let titleLabel = UILabel()
         view.addSubview(titleLabel)
@@ -50,7 +50,7 @@ class ViewController: UIViewController{
         titleLabel.text = "Tap on tableView cell"
         titleLabel.textColor = .gray
     }
-    func setupTableView(){
+    func setupTableView() {
         view.addSubview(table)
         
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -67,11 +67,11 @@ class ViewController: UIViewController{
     }
 }
 //: TABLEVIEW DATASOURCE DELEGATE
-extension ViewController: UITableViewDataSource{
+extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         10
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         let label = UILabel()
@@ -87,7 +87,7 @@ extension ViewController: UITableViewDataSource{
     }
 }
 //: TABLEVIEW DELEGATE
-extension ViewController: UITableViewDelegate{
+extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let color: UIColor = view.backgroundColor == .black ? .white: .black
         
@@ -96,7 +96,7 @@ extension ViewController: UITableViewDelegate{
     }
 }
 //: VC BECOMES DELEGATE OBJECT
-extension ViewController: ColorDelegate{
+extension ViewController: ColorDelegate {
     func changeBackgroundColorWhenTapped(_ viewController: UIViewController, with color: UIColor) {
         viewController.view.backgroundColor = color
     }

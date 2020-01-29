@@ -17,33 +17,33 @@
 import UIKit
 import PlaygroundSupport
 //: MODEL
-public struct NewspaperPublication: Decodable{
+public struct NewspaperPublication: Decodable {
     var publicationAuthor: String
     var publicationTitle: String
     var publicationDescription: String?
     var publishedAt: Date
 }
-extension NewspaperPublication: CustomStringConvertible{
-    public var description: String{
+extension NewspaperPublication: CustomStringConvertible {
+    public var description: String {
         String(describing: "Author: \(publicationAuthor)\nTitle: \(publicationTitle)\nDescription: \(publicationDescription!)\nPublished at: \(publishedAt)")
     }
 }
 //: VIEW
-public class NewspaperPublicationView: UIView{
+public class NewspaperPublicationView: UIView {
     public var authorLabel: UILabel!
     public var titleLabel: UILabel!
     public var descriptionLabel: UILabel!
     public var publishedAtLabel: UILabel!
 }
 //: CONTROLLER
-public class NewspaperViewController: UIViewController{
+public class NewspaperViewController: UIViewController {
     public var publication: NewspaperPublication?
     
-    public override func viewDidLoad(){
+    public override func viewDidLoad() {
         super.viewDidLoad()
         updateViewFromJSON()
     }
-    private func updateViewFromJSON(){
+    private func updateViewFromJSON() {
         publication = dataFromJSON()
         print(publication!)
         
@@ -90,7 +90,7 @@ public class NewspaperViewController: UIViewController{
         newspaperPublicationView.publishedAtLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 150).isActive = true
         newspaperPublicationView.publishedAtLabel.text = dateFormatter.string(from: publication!.publishedAt)
     }
-    private func dataFromJSON() -> NewspaperPublication{
+    private func dataFromJSON() -> NewspaperPublication {
         let jsonAnswer = """
           {
             "publicationAuthor": "Kirill Pustovalov",
