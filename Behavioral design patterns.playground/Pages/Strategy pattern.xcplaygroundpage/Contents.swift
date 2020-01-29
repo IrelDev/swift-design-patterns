@@ -20,40 +20,40 @@ import Foundation
 import UIKit
 import PlaygroundSupport
 //: STRATEGY PROTOCOL
-protocol QuicksortStrategy{
+protocol QuicksortStrategy {
     func quicksorted<Element>(_ array: inout [Element], lowestIndex: Int, highestIndex: Int) where Element: Comparable
     
     func partition<Element>(_ array: inout [Element], lowestIndex: Int, highestIndex: Int) -> Int where Element: Comparable
 }
 //: STRATEGIES
-struct HoareQuicksortStrategy: QuicksortStrategy{
-    func quicksorted<Element>(_ array: inout [Element], lowestIndex: Int, highestIndex: Int) where Element: Comparable{
-        if lowestIndex < highestIndex{
+struct HoareQuicksortStrategy: QuicksortStrategy {
+    func quicksorted<Element>(_ array: inout [Element], lowestIndex: Int, highestIndex: Int) where Element: Comparable {
+        if lowestIndex < highestIndex {
             let pivotPoint = partition(&array, lowestIndex: lowestIndex, highestIndex: highestIndex)
             quicksorted(&array, lowestIndex: lowestIndex, highestIndex: pivotPoint)
             quicksorted(&array, lowestIndex: pivotPoint + 1, highestIndex: highestIndex)
         }
     }
-    func partition<Element>(_ array: inout [Element], lowestIndex: Int, highestIndex: Int) -> Int where Element : Comparable{
+    func partition<Element>(_ array: inout [Element], lowestIndex: Int, highestIndex: Int) -> Int where Element: Comparable {
         let pivotPoint = array[lowestIndex]
         var startIndex = lowestIndex - 1
         var endIndex = highestIndex + 1
         
         while true {
-            repeat {endIndex -= 1} while array[endIndex] > pivotPoint
-            repeat {startIndex += 1} while array[startIndex] < pivotPoint
+            repeat { endIndex -= 1 } while array[endIndex] > pivotPoint
+            repeat { startIndex += 1 } while array[startIndex] < pivotPoint
             
-            if startIndex < endIndex{
-                array.swapAt(startIndex, endIndex)}
-            else{
+            if startIndex < endIndex {
+                array.swapAt(startIndex, endIndex)
+            } else {
                 return endIndex
             }
         }
     }
 }
-struct LomutoQuicksortStrategy: QuicksortStrategy{
-    func quicksorted<Element>(_ array: inout [Element], lowestIndex: Int, highestIndex: Int) where Element: Comparable{
-        if lowestIndex < highestIndex{
+struct LomutoQuicksortStrategy: QuicksortStrategy {
+    func quicksorted<Element>(_ array: inout [Element], lowestIndex: Int, highestIndex: Int) where Element: Comparable {
+        if lowestIndex < highestIndex {
             let pivotPoint = partition(&array, lowestIndex: lowestIndex, highestIndex: highestIndex)
             quicksorted(&array, lowestIndex: lowestIndex, highestIndex: pivotPoint - 1)
             quicksorted(&array, lowestIndex: pivotPoint + 1, highestIndex: highestIndex)
@@ -65,7 +65,7 @@ struct LomutoQuicksortStrategy: QuicksortStrategy{
         var startIndex = lowestIndex
         
         for index in lowestIndex..<highestIndex {
-            if array[index] <= pivotPoint{
+            if array[index] <= pivotPoint {
                 array.swapAt(startIndex, index)
                 startIndex += 1
             }
@@ -75,14 +75,14 @@ struct LomutoQuicksortStrategy: QuicksortStrategy{
     }
 }
 //: OBJECT USING A STRATEGY
-class ViewController: UIViewController{
+class ViewController: UIViewController {
     var quicksortStrategy: QuicksortStrategy!
     
     var resultLabel: UILabel!
     override func viewDidLoad() {
         setupView()
     }
-    func setupView(){
+    func setupView() {
         view.backgroundColor = .white
         
         createStack(with: createHoareButton(), and: createLomutoButton())
@@ -90,7 +90,7 @@ class ViewController: UIViewController{
         setupResultLabel()
         
     }
-    func createHoareButton() -> UIButton{
+    func createHoareButton() -> UIButton {
         let executeWithHoareButton = UIButton()
         
         executeWithHoareButton.backgroundColor = .systemPink
@@ -102,7 +102,7 @@ class ViewController: UIViewController{
         executeWithHoareButton.addTarget(self, action: #selector(hoareExecution), for: .touchUpInside)
         return executeWithHoareButton
     }
-    func createLomutoButton() -> UIButton{
+    func createLomutoButton() -> UIButton {
         let executeWithLomutoButton = UIButton()
         
         executeWithLomutoButton.backgroundColor = .systemPink
@@ -114,14 +114,14 @@ class ViewController: UIViewController{
         executeWithLomutoButton.addTarget(self, action: #selector(lomutoExecution), for: .touchUpInside)
         return executeWithLomutoButton
     }
-//: STRATEGY USAGE
-    @objc func hoareExecution(){
+    //: STRATEGY USAGE
+    @objc func hoareExecution() {
         quicksorted(with: HoareQuicksortStrategy())
     }
-    @objc func lomutoExecution(){
+    @objc func lomutoExecution() {
         quicksorted(with: LomutoQuicksortStrategy())
     }
-    func quicksorted(with strategy: QuicksortStrategy){
+    func quicksorted(with strategy: QuicksortStrategy) {
         var array = (0...3).map({_ in Int.random(in: 0...10)})
         
         quicksortStrategy = strategy
@@ -129,7 +129,7 @@ class ViewController: UIViewController{
         
         resultLabel.text = "Quicksorted array: \(array)"
     }
-    func createStack(with first: UIButton, and second: UIButton){
+    func createStack(with first: UIButton, and second: UIButton) {
         let stack = UIStackView()
         
         stack.distribution = .equalSpacing
@@ -145,7 +145,7 @@ class ViewController: UIViewController{
         stack.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         stack.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
-    func setupResultLabel(){
+    func setupResultLabel() {
         resultLabel = UILabel()
         resultLabel.text = "Waiting for result..."
         view.addSubview(resultLabel)
