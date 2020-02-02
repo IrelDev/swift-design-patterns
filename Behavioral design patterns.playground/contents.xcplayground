@@ -4,5 +4,6 @@
         <page name='Introduction'/>
         <page name='Delegation pattern'/>
         <page name='Strategy pattern'/>
+        <page name='Memento pattern'/>
     </pages>
 </playground>
