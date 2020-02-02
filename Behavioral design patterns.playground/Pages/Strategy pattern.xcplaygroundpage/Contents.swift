@@ -82,38 +82,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         setupView()
     }
-    func setupView() {
-        view.backgroundColor = .white
-        
-        createStack(with: createHoareButton(), and: createLomutoButton())
-        
-        setupResultLabel()
-        
-    }
-    func createHoareButton() -> UIButton {
-        let executeWithHoareButton = UIButton()
-        
-        executeWithHoareButton.backgroundColor = .systemPink
-        executeWithHoareButton.clipsToBounds = true
-        executeWithHoareButton.layer.cornerRadius = 10
-        executeWithHoareButton.tintColor = .white
-        executeWithHoareButton.setTitle("Execute with Hoare", for: .normal)
-        
-        executeWithHoareButton.addTarget(self, action: #selector(hoareExecution), for: .touchUpInside)
-        return executeWithHoareButton
-    }
-    func createLomutoButton() -> UIButton {
-        let executeWithLomutoButton = UIButton()
-        
-        executeWithLomutoButton.backgroundColor = .systemPink
-        executeWithLomutoButton.clipsToBounds = true
-        executeWithLomutoButton.layer.cornerRadius = 10
-        executeWithLomutoButton.tintColor = .white
-        executeWithLomutoButton.setTitle("Execute with lomuto", for: .normal)
-        
-        executeWithLomutoButton.addTarget(self, action: #selector(lomutoExecution), for: .touchUpInside)
-        return executeWithLomutoButton
-    }
 //: STRATEGY USAGE
     @objc func hoareExecution() {
         quicksorted(with: HoareQuicksortStrategy())
@@ -129,6 +97,38 @@ class ViewController: UIViewController {
         
         resultLabel.text = "Quicksorted array: \(array)"
     }
+}
+//: UI
+extension ViewController {
+    func setupView() {
+        view.backgroundColor = .white
+        
+        createStack(with: createHoareButton(), and: createLomutoButton())
+        
+        setupResultLabel()
+    }
+    func createHoareButton() -> UIButton {
+        let executeWithHoareButton = setupButton(with: "Execute with Hoare")
+        
+        executeWithHoareButton.addTarget(self, action: #selector(hoareExecution), for: .touchUpInside)
+        return executeWithHoareButton
+    }
+    func createLomutoButton() -> UIButton {
+        let executeWithLomutoButton = setupButton(with: "Execute with Lomuto")
+        
+        executeWithLomutoButton.addTarget(self, action: #selector(lomutoExecution), for: .touchUpInside)
+        return executeWithLomutoButton
+    }
+    func setupButton(with title: String) -> UIButton {
+          let button = UIButton()
+          button.backgroundColor = .systemPink
+          button.clipsToBounds = true
+          button.layer.cornerRadius = 10
+          
+          button.setTitle(title, for: .normal)
+          
+          return button
+      }
     func createStack(with first: UIButton, and second: UIButton) {
         let stack = UIStackView()
         
