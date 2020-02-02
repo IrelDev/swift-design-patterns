@@ -31,30 +31,33 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         setupRandomBackgroundColorButton()
     }
-    func setupRandomBackgroundColorButton(){
-        let button = UIButton(frame: CGRect.zero)
-        
-        button.backgroundColor = .systemPink
-        button.clipsToBounds = true
-        button.layer.cornerRadius = 10
-        button.tintColor = .white
-        button.setTitle("Set randomBackgroundColor", for: .normal)
-        button.addTarget(self, action: #selector(setColorToSettings), for: .touchUpInside)
-        
-        view.addSubview(button)
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        button.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-    }
 //: SINGLETON USAGE
-    @objc func setColorToSettings() {
+    @objc func setColorInSettings() {
         Settings.shared.backgroundColor = .random
         setBackgroundColorFromSettings()
     }
     func setBackgroundColorFromSettings() {
         view.backgroundColor = Settings.shared.backgroundColor
     }
+}
+//: UI
+extension ViewController {
+    func setupRandomBackgroundColorButton() {
+           let button = UIButton(frame: CGRect.zero)
+           
+           button.backgroundColor = .systemPink
+           button.clipsToBounds = true
+           button.layer.cornerRadius = 10
+           button.tintColor = .white
+           button.setTitle("Set randomBackgroundColor", for: .normal)
+           button.addTarget(self, action: #selector(setColorInSettings), for: .touchUpInside)
+           
+           view.addSubview(button)
+           
+           button.translatesAutoresizingMaskIntoConstraints = false
+           button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+           button.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+       }
 }
 extension UIColor{
     static var random: UIColor {
