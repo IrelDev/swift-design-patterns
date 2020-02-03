@@ -8,12 +8,13 @@
  > Memento pattern has three parts, specifically originator, memento and caretaker.
  > * Originator is an object that will be saved or restored.
  > * Memento represents the state of an object.
- > * Caretaker requests a memento object from the originator, then configures memento and returns memento to the originator.
+ > * Caretaker requests a memento object from the originator then configures memento and returns memento to the originator.
  
  ## When to use Memento?
  Use this pattern when you want to create an ability to save and restore the state of an object.
- For example, you can use this pattern when you want to create text editor, as in example below.
- > Memento pattern can be implemented in many ways and I use userDefaults to easily perform save and load operations, as it should be in iOS development.
+ For example, you can use this pattern when you want to create a text editor, as in the example below.
+ > Memento pattern can be implemented in many ways and I use userDefaults to easily do save and load operations, as it should be in iOS development.
+ > If you don't want to use userDefaults you still have an ability to save and restore mementos from any data structure.
  
  ## Example below shows how Memento works. Don't forget to open live view and launch playground to see results and layout.
  */
@@ -35,8 +36,8 @@ class TextCareTaker {
     private let userDefaults = UserDefaults.standard
     
     enum DecodableError: Error {
-           case decodeFailed
-       }
+        case decodeFailed
+    }
 //: > We don't need to implement memento, because memento is a data that's created every time when textState encodes or decodes.
     func save(textState: TextOriginator, title: String) {
         let memento = try? encoder.encode(textState)
@@ -134,7 +135,7 @@ extension ViewController {
     }
 }
 PlaygroundPage.current.liveView = ViewController()
-//: [Next design pattern](@next)
+//: [Observer pattern](@next)
 /*:
  MIT License
  
