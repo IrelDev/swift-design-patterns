@@ -4,17 +4,17 @@
  Singleton design pattern
  ============
  
- > Singleton pattern allows a class to have only one instance, which means that every reference to this class refers to the same instance.
+ > The Singleton pattern allows a class to have only one instance, which means that every reference to this class refers to the same instance.
  >
  > Singleton pattern has two parts, specifically the Singleton class and the Singleton instance.
  > * Singleton class contains the Singleton instance.
- >*  Singleton instance is an instance of the Singleton class in the Singleton class itself and it's usually called shared.
+ >*  Singleton instance is the instance of the Singleton class in the Singleton class itself.
  
- ## When to use Singleton?
+ ## When to use the Singleton pattern?
  Use this pattern when using more than one instance of a class will cause problems.
- For example, we don't need two or more instances of user settings, so we use the Singleton pattern, as in the example below.
+ For example, we don't need two or more instances of user settings created, so we use the Singleton pattern, as in the example below.
  
- ## Example below shows how Singleton works. Don't forget to open live view and launch playground to see results and layout.
+ ## Example below shows how the Singleton pattern works. Don't forget to open live view and launch playground to see the results and layout.
  */
 import UIKit
 import PlaygroundSupport
@@ -69,7 +69,7 @@ extension UIColor{
     }
 }
 PlaygroundPage.current.liveView = ViewController()
-//: [Next design pattern](@next)
+//: [Builder pattern](@next)
 /*:
  MIT License
  
