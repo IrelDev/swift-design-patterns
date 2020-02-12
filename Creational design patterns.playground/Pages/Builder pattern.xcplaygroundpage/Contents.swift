@@ -72,7 +72,6 @@ class CarBuilder {
     func setMaterial(material: Material) {
         self.material = material
     }
-    
     func increaseDoorsAmountOnTwo(for times: Int = 1) {
         for _ in 0..<times {
             doorsAmount += 2
@@ -146,6 +145,7 @@ let director = Director()
 
 human.car = director.createUltraSuperProClassCar()
 print("USAGE \n")
+
 if let car = human.car {
     print(car)
 } else {
@@ -179,9 +179,9 @@ class ViewController: UIViewController {
         print(car)
     }
     @objc func performNilCarCreationProcces() {
-        var human = Human()
+        let human = Human()
         
-        guard let car = human.car else { print("That human has no car :( \n"); return }
+        guard human.car != nil else { print("That human has no car :( \n"); return }
     }
 }
 //: UI
