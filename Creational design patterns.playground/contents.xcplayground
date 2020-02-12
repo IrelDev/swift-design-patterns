@@ -3,5 +3,6 @@
     <pages>
         <page name='Introduction'/>
         <page name='Singleton pattern'/>
+        <page name='Builder pattern'/>
     </pages>
 </playground>
