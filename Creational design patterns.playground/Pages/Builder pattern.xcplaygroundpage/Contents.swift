@@ -58,7 +58,7 @@ struct Car {
 }
 extension Car: CustomStringConvertible {
     public var description: String {
-        String("The car made with \(material.rawValue), it has \(doorsAmount) doors, it comes with \(complectation.rawValue) complectation, it has \(additionalComponents.count) additionalComponents and it has \(carLength) length in meters.")
+        String("The car made with \(material.rawValue), it has \(doorsAmount) doors, it comes with \(complectation.rawValue) complectation, it has \(additionalComponents.count) additionalComponents and it has \(carLength) length in meters.\n")
     }
 }
 //: BUILDER
@@ -115,7 +115,7 @@ class Director {
         
         return builder.buildProduct()
     }
-    func createUltraSuperProCar() -> Car {
+    func createUltraSuperProClassCar() -> Car {
         let builder = CarBuilder()
         
         builder.increaseDoorsAmountOnTwo(for: 10)
@@ -124,6 +124,14 @@ class Director {
         
         builder.addComponent(component: .audioSystem)
         builder.addComponent(component: .seatHeating)
+        
+        return builder.buildProduct()
+    }
+    func createStandartClassCar() -> Car {
+        let builder = CarBuilder()
+        
+        builder.increaseDoorsAmountOnTwo()
+        builder.addComponent(component: .audioSystem)
         
         return builder.buildProduct()
     }
@@ -136,14 +144,90 @@ struct Human {
 var human = Human()
 let director = Director()
 
-human.car = director.createUltraSuperProCar()
-
+human.car = director.createUltraSuperProClassCar()
+print("USAGE \n")
 if let car = human.car {
     print(car)
 } else {
     print("That man has not got a car...")
 }
-
+//: LIVE VIEW USAGE
+class ViewController: UIViewController {
+    override func viewDidLoad() {
+        view.backgroundColor = .white
+        setupUI()
+    }
+    @objc func performEconomCarCreationProcess() {
+        var human = Human()
+        human.car = Director().createEconomClassCar()
+        
+        guard let car = human.car else { return }
+        print(car)
+    }
+    @objc func performStandartCarCreationProcess() {
+        var human = Human()
+        human.car = Director().createStandartClassCar()
+        
+        guard let car = human.car else { return }
+        print(car)
+    }
+    @objc func performProCarCreationProcess() {
+        var human = Human()
+        human.car = Director().createUltraSuperProClassCar()
+        
+        guard let car = human.car else { return }
+        print(car)
+    }
+    @objc func performNilCarCreationProcces() {
+        var human = Human()
+        
+        guard let car = human.car else { print("That human has no car :( \n"); return }
+    }
+}
+//: UI
+extension ViewController {
+    func setupUI() {
+        let stack = UIStackView()
+        stack.distribution = .equalSpacing
+        stack.alignment = .center
+        stack.spacing = 20.0
+        stack.alignment = .center
+        
+        let economButton = createButtonWith(title: "Econom")
+        economButton.addTarget(self, action: #selector(performEconomCarCreationProcess), for: .touchUpInside)
+        
+        let standartButton: UIButton = createButtonWith(title: "Standart")
+        standartButton.addTarget(self, action: #selector(performStandartCarCreationProcess), for: .touchUpInside)
+        
+        let proButton: UIButton = createButtonWith(title: "PRO")
+        proButton.addTarget(self, action: #selector(performProCarCreationProcess), for: .touchUpInside)
+        
+        let nilCarButton: UIButton = createButtonWith(title: "Nil")
+        nilCarButton.addTarget(self, action: #selector(performNilCarCreationProcces), for: .touchUpInside)
+        
+        stack.addArrangedSubview(economButton)
+        stack.addArrangedSubview(standartButton)
+        stack.addArrangedSubview(proButton)
+        stack.addArrangedSubview(nilCarButton)
+        
+        view.addSubview(stack)
+        
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        stack.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -150).isActive = true
+    }
+    func createButtonWith(title: String) -> UIButton {
+        let button = UIButton()
+        button.backgroundColor = .systemPink
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 10
+        
+        button.setTitle(title, for: .normal)
+        
+        return button
+    }
+}
+PlaygroundPage.current.liveView = ViewController()
 //: [Next design pattern](@next)
 /*:
  MIT License
