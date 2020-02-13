@@ -139,19 +139,7 @@ struct Human {
     var car: Car?
     init() { }
 }
-//:  USAGE
-var human = Human()
-let director = Director()
-
-human.car = director.createUltraSuperProClassCar()
-print("USAGE \n")
-
-if let car = human.car {
-    print(car)
-} else {
-    print("That man has not got a car...")
-}
-//: LIVE VIEW USAGE
+//: USAGE
 class ViewController: UIViewController {
     override func viewDidLoad() {
         view.backgroundColor = .white
