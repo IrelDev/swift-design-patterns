@@ -77,12 +77,15 @@ class CarBuilder {
             doorsAmount += 2
         }
     }
-    func decreaseDoorsAmountOnTwo() {
-        guard doorsAmount >= 4 else {
+    func decreaseDoorsAmountOnTwo(for times: Int = 1) {
+        guard doorsAmount - 2 * times >= 2 else {
             print("Doors amount cannot be less than two")
             return
         }
-        doorsAmount -= 2
+        for _ in 0..<times {
+            doorsAmount -= 2
+            print(doorsAmount)
+        }
     }
     func setComplectation(complectation: Complectation) {
         self.complectation = complectation
