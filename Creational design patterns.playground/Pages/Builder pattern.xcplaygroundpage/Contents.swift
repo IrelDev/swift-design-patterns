@@ -6,7 +6,7 @@
  
  > The Builder pattern allows creating complex objects step by step without creating a massive initializer or creating multiple subclasses of an object.
  >
- > Builder pattern has three parts, specifically the builder, the product and the director.
+ > Builder pattern has three parts, specifically builder, product and director.
  > * Director class contains methods that specify the order of the builder's steps.
  > * Builder gets step-by-step orders from director and handles the creation of the product.
  >*  Product is an object that will be created by builders.
@@ -17,9 +17,8 @@
  
  ## Example below shows how the Builder pattern works. Don't forget to open live view and launch playground to see the results and layout.
  */
-import UIKit
 import PlaygroundSupport
-
+import UIKit
 enum Material: String {
     case iron
     case platinum
@@ -111,13 +110,13 @@ class CarBuilder {
 }
 //: DIRECTOR
 class Director {
-    func createEconomClassCar() -> Car {
+    static func createEconomClassCar() -> Car {
         let builder = CarBuilder()
         builder.setComplectation(complectation: .econom)
         
         return builder.buildProduct()
     }
-    func createUltraSuperProClassCar() -> Car {
+    static func createUltraSuperProClassCar() -> Car {
         let builder = CarBuilder()
         
         builder.increaseDoorsAmountOnTwo(for: 10)
@@ -129,7 +128,7 @@ class Director {
         
         return builder.buildProduct()
     }
-    func createStandartClassCar() -> Car {
+    static func createStandartClassCar() -> Car {
         let builder = CarBuilder()
         
         builder.increaseDoorsAmountOnTwo()
@@ -150,21 +149,21 @@ class ViewController: UIViewController {
     }
     @objc func performEconomCarCreationProcess() {
         var human = Human()
-        human.car = Director().createEconomClassCar()
+        human.car = Director.createEconomClassCar()
         
         guard let car = human.car else { return }
         print(car)
     }
     @objc func performStandartCarCreationProcess() {
         var human = Human()
-        human.car = Director().createStandartClassCar()
+        human.car = Director.createStandartClassCar()
         
         guard let car = human.car else { return }
         print(car)
     }
     @objc func performProCarCreationProcess() {
         var human = Human()
-        human.car = Director().createUltraSuperProClassCar()
+        human.car = Director.createUltraSuperProClassCar()
         
         guard let car = human.car else { return }
         print(car)
