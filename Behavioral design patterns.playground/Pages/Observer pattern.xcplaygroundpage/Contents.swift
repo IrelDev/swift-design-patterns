@@ -6,8 +6,8 @@
  > The Observer pattern allows one object to observe changes on another object, usually in an event-based relationship model.
  >
  > The Observer pattern has two parts, specifically the subscriber and the publisher.
- > * The publisher is the observable object that sends updates.
- > * The subscriber is the observer object that receives updates.
+ > * Publisher is the observable object that sends updates.
+ > * Subscriber is the observer object that receives updates.
  
  ## When to use the Observer pattern?
  Use this pattern when you want one object to catch changes of another object.
