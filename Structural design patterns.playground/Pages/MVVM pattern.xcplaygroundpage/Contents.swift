@@ -69,20 +69,20 @@ class View: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     override init(frame: CGRect) {
-        
         nameLabel = UILabel()
         lastNameLabel = UILabel()
         sexLabel = UILabel()
         
-        let labelArrangedSubviews = [nameLabel, lastNameLabel, sexLabel]
-        
-        let labelStack = UIStackView(arrangedSubviews: labelArrangedSubviews)
+        let labelStack = UIStackView(frame: frame)
         
         labelStack.axis = .vertical
         labelStack.distribution = .fillEqually
         labelStack.alignment = .center
         labelStack.spacing = 10
         
+        labelStack.addArrangedSubview(nameLabel)
+         labelStack.addArrangedSubview(lastNameLabel)
+         labelStack.addArrangedSubview(sexLabel)
         super.init(frame: frame)
         addSubview(labelStack)
         backgroundColor = .white
