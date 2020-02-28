@@ -218,7 +218,7 @@ extension ViewController {
     }
 }
 PlaygroundPage.current.liveView = ViewController()
-//: [Next design pattern](@next)
+//: [Factory pattern](@next)
 /*:
  MIT License
  

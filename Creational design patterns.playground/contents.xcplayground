@@ -4,5 +4,6 @@
         <page name='Introduction'/>
         <page name='Singleton pattern'/>
         <page name='Builder pattern'/>
+        <page name='Factory pattern'/>
     </pages>
 </playground>
