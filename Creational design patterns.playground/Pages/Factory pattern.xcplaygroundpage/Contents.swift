@@ -5,6 +5,7 @@
  ============
  
  > The Factory pattern allows to simply create objects using only one step and it allows to change a type of a object at runtime.
+ > The Factory pattern is used to replace object initializers, hiding an object creation process.
  >
  > The Factory pattern has two parts, specifically factory and its products.
  > * Factory creates products.
