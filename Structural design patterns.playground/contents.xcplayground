@@ -4,5 +4,6 @@
         <page name='Introduction'/>
         <page name='MVC pattern'/>
         <page name='MVVM pattern'/>
+        <page name='Adapter pattern'/>
     </pages>
 </playground>
