@@ -156,7 +156,7 @@ mother.age += 1 //56
 fatherSubscriber.cancel() //Subscriber cannot get updates now
 
 mother.age += 1
-//: [Next design pattern](@next)
+//: [Iterator pattern](@next)
 /*:
  MIT License
  

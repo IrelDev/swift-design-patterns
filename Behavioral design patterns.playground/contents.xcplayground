@@ -6,5 +6,6 @@
         <page name='Strategy pattern'/>
         <page name='Memento pattern'/>
         <page name='Observer pattern'/>
+        <page name='Iterator pattern'/>
     </pages>
 </playground>
