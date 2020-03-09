@@ -71,7 +71,7 @@ factory.districts(of: .NewYork)?.forEach({
 factory.districts(of: .LosAngeles)?.forEach({
     print($0)
 })
-//: [Next design pattern](@next)
+//: [Prototype pattern](@next)
 /*:
  MIT License
  

@@ -43,27 +43,25 @@ struct DollarAdapter: AdapterProtocol {
         self.adaptee = adaptee
     }
     
-    @discardableResult
     func payForService(service: Service) -> Double {
         1.10 * adaptee.payForService(service: service)
     }
 }
 //: ADAPTER
-struct RubbleAdapter: AdapterProtocol {
+struct RubleAdapter: AdapterProtocol {
     internal let adaptee: LegacyObject
     
     init(adaptee: LegacyObject) {
         self.adaptee = adaptee
     }
     
-    @discardableResult
     func payForService(service: Service) -> Double {
         65 * adaptee.payForService(service: service)
     }
 }
 enum NewСurrency: String {
     case Dollars
-    case Rubbles
+    case Rubles
 }
 struct Person {
     private var adapter: AdapterProtocol
@@ -76,8 +74,8 @@ struct Person {
         switch preferredCurrency {
         case .Dollars:
             adapter = DollarAdapter(adaptee: legacyObject)
-        case .Rubbles:
-            adapter = RubbleAdapter(adaptee: legacyObject)
+        case .Rubles:
+            adapter = RubleAdapter(adaptee: legacyObject)
         }
     }
     func useService(service: Service) {
@@ -88,12 +86,12 @@ struct Person {
 let person = Person(preferredCurrency: .Dollars)
 person.useService(service: .haircut)
 
-let secondPerson = Person(preferredCurrency: .Rubbles)
+let secondPerson = Person(preferredCurrency: .Rubles)
 secondPerson.useService(service: .massage)
 
 //: LEGACY USAGE
 let legacyPaymentSystem = LegacyObject().payForService(service: .haircut)
-print("Person paid \(legacyPaymentSystem) Euros")
+print("Person paid \(legacyPaymentSystem) Euros for haircut")
 //: [Next design pattern](@next)
 /*:
  MIT License
