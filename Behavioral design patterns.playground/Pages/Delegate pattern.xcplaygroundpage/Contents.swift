@@ -1,7 +1,7 @@
 //: [Introduction](@previous)
 
 /*:
- Delegation design pattern
+ Delegate design pattern
  ============
  
  > Delegation pattern allows an object to use another object to provide data or perform a task instead of doing it yourself.
@@ -14,7 +14,7 @@
  >
  > Note that any protocol can be used as the delegate.
  
- ## When to use Delegation?
+ ## When to use Delegate?
  Use this pattern to break up objects or create generic, reusable components.  Actually, delegation pattern is common in frameworks from Apple, especially in UIKit that will be used in this playground. For example, both UITableViewDelegate and UITableViewDataSource follow a delegation pattern.
  
  Why Apple use two delegates to provide tableView?
