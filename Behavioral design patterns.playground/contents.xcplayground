@@ -8,5 +8,6 @@
         <page name='Observer pattern'/>
         <page name='Iterator pattern'/>
         <page name='State pattern'/>
+        <page name='Multicast delegate '/>
     </pages>
 </playground>

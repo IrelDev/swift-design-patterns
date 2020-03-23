@@ -92,7 +92,7 @@ audioSystem.turnOff()
 print(audioSystem)
 
 audioSystem.playMusic(with: .madeByAmerica)
-//: [Next design pattern](@next)
+//: [Multicast delegate pattern](@next)
 /*:
  MIT License
  
