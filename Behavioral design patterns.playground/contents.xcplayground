@@ -7,5 +7,6 @@
         <page name='Memento pattern'/>
         <page name='Observer pattern'/>
         <page name='Iterator pattern'/>
+        <page name='State pattern'/>
     </pages>
 </playground>

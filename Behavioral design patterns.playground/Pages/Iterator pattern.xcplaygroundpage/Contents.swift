@@ -72,6 +72,7 @@ while !collectionThree.isEmpty {
     }
     print(next)
 }
+//: [State pattern](@next)
 /*:
  MIT License
  
