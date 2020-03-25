@@ -19,12 +19,12 @@
 import UIKit
 import PlaygroundSupport
 //: SINGLETON CLASS
-final class Settings{
+final class Settings {
 //: SINGLETON INSTANCE
     static let shared = Settings()
     var backgroundColor: UIColor = .white
     
-    public init(){}
+    public init() {}
 }
 class ViewController: UIViewController {
     override func viewDidLoad() {
@@ -59,7 +59,7 @@ extension ViewController {
            button.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
        }
 }
-extension UIColor{
+extension UIColor {
     static var random: UIColor {
         let red: CGFloat = .random(in: 0...1)
         let green: CGFloat = .random(in: 0...1)
