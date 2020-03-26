@@ -6,5 +6,6 @@
         <page name='MVVM pattern'/>
         <page name='Adapter pattern'/>
         <page name='Facade pattern'/>
+        <page name='Flyweight pattern'/>
     </pages>
 </playground>
