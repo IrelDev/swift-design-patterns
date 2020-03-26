@@ -1,4 +1,4 @@
-//: [MVVM pattern](@previous)
+//: [Adapter pattern](@previous)
 /*:
  Facade design pattern
  ============
@@ -79,6 +79,7 @@ var facade = Facade(storage: storage)
 
 facade.buyTicket(on: .LA, for: customerOne)
 facade.buyTicket(on: .LA, for: customerrTwo)
+//: [Flyweight pattern](@next)
 /*:
  MIT License
  

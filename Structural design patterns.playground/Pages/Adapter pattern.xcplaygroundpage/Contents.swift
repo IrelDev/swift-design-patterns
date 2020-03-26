@@ -92,7 +92,7 @@ secondPerson.useService(service: .massage)
 //: LEGACY USAGE
 let legacyPaymentSystem = LegacyObject().payForService(service: .haircut)
 print("Person paid \(legacyPaymentSystem) Euros for haircut")
-//: [Next design pattern](@next)
+//: [Facade pattern](@next)
 /*:
  MIT License
  
