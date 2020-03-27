@@ -7,5 +7,6 @@
         <page name='Adapter pattern'/>
         <page name='Facade pattern'/>
         <page name='Flyweight pattern'/>
+        <page name='Composite pattern'/>
     </pages>
 </playground>
