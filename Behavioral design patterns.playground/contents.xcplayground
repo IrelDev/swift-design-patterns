@@ -9,5 +9,6 @@
         <page name='Iterator pattern'/>
         <page name='State pattern'/>
         <page name='Multicast delegate '/>
+        <page name='Mediator pattern'/>
     </pages>
 </playground>
