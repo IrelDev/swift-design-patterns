@@ -10,5 +10,6 @@
         <page name='State pattern'/>
         <page name='Multicast delegate '/>
         <page name='Mediator pattern'/>
+        <page name='Command pattern'/>
     </pages>
 </playground>
