@@ -97,7 +97,7 @@ invoker.addCommand(command: PlayMusicCommand(receiver: audioSystem))
 invoker.addCommand(command: TurnOffCommand(receiver: audioSystem))
 
 invoker.performListOfCommands()
-//: [Next design pattern](@next)
+//: [Chain of responsibility pattern](@next)
 /*:
  MIT License
  
