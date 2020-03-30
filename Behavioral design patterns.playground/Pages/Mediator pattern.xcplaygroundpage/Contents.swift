@@ -108,7 +108,7 @@ print()
 mediator.invokeObjects({
     $0.recieve(nil, sentMessage: "Initial clipboard state")
 })
-//: [Next design pattern](@next)
+//: [Command pattern](@next)
 /*:
  MIT License
  
