@@ -11,5 +11,6 @@
         <page name='Multicast delegate '/>
         <page name='Mediator pattern'/>
         <page name='Command pattern'/>
+        <page name='Chain of responsibility pattern'/>
     </pages>
 </playground>
