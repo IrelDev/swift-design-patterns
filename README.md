@@ -1,6 +1,3 @@
-# swift-design-patterns
-Swift design patterns in simple playgrounds.
-
 # Table of contents
 |       Behavioral design patterns         |      Creational design patterns          |      Structural design patterns      |
 |------------------------------------------|------------------------------------------|--------------------------------------|
