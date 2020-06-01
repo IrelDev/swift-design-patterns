@@ -156,6 +156,30 @@ mother.age += 1 //56
 fatherSubscriber.cancel() //Subscriber cannot get updates now
 
 mother.age += 1
+//:KVO
+//Source: https://developer.apple.com/documentation/swift/cocoa_design_patterns/using_key-value_observing_in_swift
+class MyObjectToObserve: NSObject {
+    @objc dynamic var myDate = NSDate(timeIntervalSince1970: 0) // 1970
+    func updateDate() {
+        myDate = myDate.addingTimeInterval(Double(2 << 30)) // Adds about 68 years.
+    }
+}
+class MyObserver: NSObject {
+    @objc var objectToObserve: MyObjectToObserve
+    var observation: NSKeyValueObservation?
+    
+    init(object: MyObjectToObserve) {
+        objectToObserve = object
+        super.init()
+        
+        observation = observe(
+            \.objectToObserve.myDate,
+            options: [.old, .new]
+        ) { object, change in
+            print("myDate changed from: \(change.oldValue!), updated to: \(change.newValue!)")
+        }
+    }
+}
 //: [Iterator pattern](@next)
 /*:
  MIT License
