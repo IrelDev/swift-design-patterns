@@ -111,7 +111,7 @@ public class NewspaperViewController: UIViewController {
     }
 }
 PlaygroundPage.current.liveView = NewspaperViewController()
-//: [MVVM pattern](@next)
+//: [MVP pattern](@next)
 /*:
  MIT License
  

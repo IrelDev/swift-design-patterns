@@ -1,4 +1,4 @@
-//: [MVC pattern](@previous)
+//: [MVP pattern](@previous)
 
 /*:
  The MVVM design pattern
