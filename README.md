@@ -1818,7 +1818,7 @@ facade.buyTicket(on: .LA, for: customerrTwo)
 ## Decorator
 The decorator pattern is a design pattern that allows behavior to be added to an individual object, dynamically, without affecting the behavior of other objects from the same class.
  Example below shows how the Decorator pattern works. Don't forget to launch playground to see the results.
-```
+```swift
 protocol Tesla {
     var name: String { get }
     var price: Double { get }
