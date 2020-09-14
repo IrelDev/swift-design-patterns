@@ -7,7 +7,7 @@
 |[Delegate](#delegate)                     |[Factory](#factory)                      |[Facade](#facade)                     |
 |[Strategy](#strategy)                     |                                         |[MVC](#mvc)                           |
 |[Observer](#observer)                     |                                         |[MVVM](#mvvm)                         |
-|[Iterator](#iterator)
+|[Iterator](#iterator)                     |                                         |[Decorator](#decorator)               |
 |[Mediator](#mediator)
 |[Command](#command)
 |[Chain of responsibility](#chain-of-responsibility)
@@ -1814,6 +1814,73 @@ var facade = Facade(storage: storage)
 
 facade.buyTicket(on: .LA, for: customerOne)
 facade.buyTicket(on: .LA, for: customerrTwo)
+```
+## Decorator
+The decorator pattern is a design pattern that allows behavior to be added to an individual object, dynamically, without affecting the behavior of other objects from the same class.
+ Example below shows how the Decorator pattern works. Don't forget to launch playground to see the results.
+```
+protocol Tesla {
+    var name: String { get }
+    var price: Double { get }
+}
+
+class ModelS: Tesla {
+    var name: String {
+        return "Model S"
+    }
+    
+    var price: Double {
+        return 94000.00
+    }
+}
+
+class Model3: Tesla {
+    var name: String {
+        return "Model 3"
+    }
+    
+    var price: Double {
+        return 75500.00
+    }
+    
+}
+
+class TeslaDecorator: Tesla {
+    var name: String {
+        return carInstance.name
+    }
+    
+    var price: Double {
+        return carInstance.price
+    }
+    
+    let carInstance: Tesla
+    
+    init(car: Tesla) {
+        self.carInstance = car
+    }
+}
+
+ class WheelUpgrades: TeslaDecorator {
+    override var price: Double {
+       return carInstance.price + 3000
+    }
+    
+    override var name: String {
+        return carInstance.name + " " + "17 in rims"
+    }
+    
+    required override init(car: Tesla) {
+        super.init(car: car)
+    }
+}
+
+var model3: Tesla = Model3()
+print(model3.price) // 75500.0
+print(model3.name) // Model 3
+model3 = WheelUpgrades(car: model3)
+print(model3.price) // 78500.0
+print(model3.name) // Model 3 17 in Rims
 ```
 
 ## MVC
