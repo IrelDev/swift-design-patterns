@@ -9,5 +9,6 @@
         <page name='Facade pattern'/>
         <page name='Flyweight pattern'/>
         <page name='Composite pattern'/>
+        <page name='Decorator pattern'/>
     </pages>
 </playground>
