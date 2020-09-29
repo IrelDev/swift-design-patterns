@@ -15,7 +15,7 @@
  > Note that any protocol can be used as the delegate.
  
  ## When to use Delegate?
- Use this pattern to break up objects or create generic, reusable components.  Actually, delegation pattern is common in frameworks from Apple, especially in UIKit that will be used in this playground. For example, both UITableViewDelegate and UITableViewDataSource follow a delegation pattern.
+ Use this pattern to break up objects or create generic, reusable components. Delegate pattern allows to delegate one behaviour to another object  Actually, delegation pattern is common in frameworks from Apple, especially in UIKit that will be used in this playground. For example, both UITableViewDelegate and UITableViewDataSource follow a delegation pattern.
  
  Why Apple use two delegates to provide tableView?
  * Apple frameworks use DataSource named objects to make a group of delegate methods that provide data. If you want to display UITableViewCells, your custom class must be conformed to the UITableViewDataSource Protocol.
