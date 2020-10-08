@@ -7,68 +7,75 @@
  
  ## Example below shows how the Decorator pattern works. Don't forget to launch playground to see the results.
  */
-protocol Tesla {
-    var name: String { get }
-    var price: Double { get }
+enum Service: String {
+    case haircut
+    case massage
 }
-
-class ModelS: Tesla {
-    var name: String {
-        return "Model S"
-    }
-    
-    var price: Double {
-        return 94000.00
-    }
-}
-
-class Model3: Tesla {
-    var name: String {
-        return "Model 3"
-    }
-    
-    var price: Double {
-        return 75500.00
-    }
-    
-}
-
-class TeslaDecorator: Tesla {
-    var name: String {
-        return carInstance.name
-    }
-    
-    var price: Double {
-        return carInstance.price
-    }
-    
-    let carInstance: Tesla
-    
-    init(car: Tesla) {
-        self.carInstance = car
+struct ObjectToBeDecorated {
+    func payForService(service: Service) -> Double {
+        switch service {
+        case .haircut:
+            return 10
+        case .massage:
+            return 16
+        }
     }
 }
-
- class WheelUpgrades: TeslaDecorator {
-    override var price: Double {
-       return carInstance.price + 3000
-    }
+protocol DecoratorProtocol {
+    var objectToBeDecorated: ObjectToBeDecorated { get }
     
-    override var name: String {
-        return carInstance.name + " " + "17 in rims"
-    }
+    @discardableResult
+    func payForService(service: Service) -> Double
+}
+//: DECORATOR
+struct EuroDecorator: DecoratorProtocol {
+    internal let objectToBeDecorated: ObjectToBeDecorated
     
-    required override init(car: Tesla) {
-        super.init(car: car)
+    func payForService(service: Service) -> Double {
+        1.10 * objectToBeDecorated.payForService(service: service)
     }
 }
+//: DECORATOR
+struct RubleDecorator: DecoratorProtocol {
+    internal let objectToBeDecorated: ObjectToBeDecorated
+    
+    func payForService(service: Service) -> Double {
+        65 * objectToBeDecorated.payForService(service: service)
+    }
+}
+enum NewСurrency: String {
+    case Dollars
+    case Rubles
+}
+struct Person {
+    private var decorator: DecoratorProtocol
+    private var preferredCurrency: NewСurrency
+    private let objectToBeDecorated = ObjectToBeDecorated()
+    
+    init(preferredCurrency: NewСurrency) {
+        self.preferredCurrency = preferredCurrency
+        
+        switch preferredCurrency {
+        case .Dollars:
+            decorator = EuroDecorator(objectToBeDecorated: objectToBeDecorated)
+        case .Rubles:
+            decorator = RubleDecorator(objectToBeDecorated: objectToBeDecorated)
+        }
+    }
+    func useService(service: Service) {
+        print("Person paid \(decorator.payForService(service: service)) \(preferredCurrency.rawValue) for the \(service.rawValue)")
+    }
+}
+//: DECORATOR USAGE
+let person = Person(preferredCurrency: .Dollars)
+person.useService(service: .haircut)
 
-var model3: Tesla = Model3()
-print(model3.price) // 75500.0
-print(model3.name) // Model 3
-model3 = WheelUpgrades(car: model3)
-print(model3.price) // 78500.0
-print(model3.name) // Model 3 17 in Rims
+let secondPerson = Person(preferredCurrency: .Rubles)
+secondPerson.useService(service: .massage)
+
+//: STANDART OBJECT USAGE
+let standartPaymentSystem = ObjectToBeDecorated().payForService(service: .haircut)
+print("Person paid \(standartPaymentSystem) Euros for haircut")
 //: [Next design pattern](@next)
 /*:
  MIT License
