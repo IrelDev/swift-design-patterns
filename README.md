@@ -1662,80 +1662,29 @@ The Adapter pattern allows one type to work with other incompatible type.
 Use this pattern when you want to change the interface of an object but can't change it. You can choose this pattern to implement your own interface for third-party libraries and platforms.
 
 ```swift
-enum Service: String {
-    case haircut
-    case massage
-}
 //: LEGACY OBJECT
-struct LegacyObject {
-    func payForService(service: Service) -> Double {
-        switch service {
-        case .haircut:
-            return 10
-        case .massage:
-            return 16
-        }
+struct USAPowerSocket {
+    func makeConnectionWithTwoFlatPlugs() -> String {
+        return "Connection Established"
     }
 }
-protocol AdapterProtocol {
-    var adaptee: LegacyObject { get }
-    
-    @discardableResult
-    func payForService(service: Service) -> Double
-}
-//: ADAPTER
-struct DollarAdapter: AdapterProtocol {
-    internal let adaptee: LegacyObject
-    
-    init(adaptee: LegacyObject) {
-        self.adaptee = adaptee
-    }
-    
-    func payForService(service: Service) -> Double {
-        1.10 * adaptee.payForService(service: service)
-    }
-}
-//: ADAPTER
-struct RubleAdapter: AdapterProtocol {
-    internal let adaptee: LegacyObject
-    
-    init(adaptee: LegacyObject) {
-        self.adaptee = adaptee
-    }
-    
-    func payForService(service: Service) -> Double {
-        65 * adaptee.payForService(service: service)
-    }
-}
-enum NewСurrency: String {
-    case Dollars
-    case Rubles
-}
-struct Person {
-    private var adapter: AdapterProtocol
-    private var preferredCurrency: NewСurrency
-    private let legacyObject = LegacyObject()
-    
-    init(preferredCurrency: NewСurrency) {
-        self.preferredCurrency = preferredCurrency
-        
-        switch preferredCurrency {
-        case .Dollars:
-            adapter = DollarAdapter(adaptee: legacyObject)
-        case .Rubles:
-            adapter = RubleAdapter(adaptee: legacyObject)
-        }
-    }
-    func useService(service: Service) {
-        print("Person paid \(adapter.payForService(service: service)) \(preferredCurrency.rawValue) for the \(service.rawValue)")
-    }
-}
-//: ADAPTER USAGE
-let person = Person(preferredCurrency: .Dollars)
-person.useService(service: .haircut)
 
-let secondPerson = Person(preferredCurrency: .Rubles)
-secondPerson.useService(service: .massage)
+protocol USAPowerAdapter {
+    var adaptee: USAPowerSocket { get set }
+    func makeConnection() -> String
+}
+struct EUAdapter: USAPowerAdapter {
+    var adaptee: USAPowerSocket
+    
+    func makeConnection() -> String {
+        return adaptee.makeConnectionWithTwoFlatPlugs() + " through EU Adapter"
+    }
+}
+let usaPowerSocket = USAPowerSocket()
+print(usaPowerSocket.makeConnectionWithTwoFlatPlugs())
+
+let adapter = EUAdapter(adaptee: usaPowerSocket)
+print(adapter.makeConnection())
 ```
 
 ## Facade
